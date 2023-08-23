@@ -21,12 +21,20 @@
         <Roleta id="roleta" />
         
       </section>
+
+      <section id="premios-section">
+
+        <Premios />
+
+      </section>
+
     </main>
   </template>
   
   <script setup>
   import Header from '../components/Header.vue'
   import Roleta from '../components/Roleta.vue';
+  import Premios from '../components/Premios.vue';
   </script>
   
   <style scoped lang="scss">
@@ -126,4 +134,17 @@
     position: relative;
     padding: 50px 10px;
   }
+  #premios-section{
+    height: 60rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: baseline;
+    background-color: #121212;
+    font-family: 'Inter';
+    color: #FFF;
+    padding-top: 8rem;
+    align-items: center;
+    position: relative;
+    padding: 50px 10px;
+}
   </style>

@@ -1,3 +1,0 @@
-<template>
-    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="width: 100%; height: 100%" width="17"  height="24" ><defs><svg xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 0 17 24" id="svg3436151614"><path d="M 16.289 -0 L 16.289 8 L 8.289 8 L 0.289 -0 Z M 0.289 8 L 8.289 8 L 16.289 16 L 8.289 16 L 8.289 24 L 0.289 16 Z" fill="#FFFFFF"></path></svg></defs><use href="#svg3436151614"></use></svg>
-</template>

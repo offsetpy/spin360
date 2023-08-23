@@ -11,8 +11,8 @@
     </div>
 
     <div class="links">
-        <router-link @click="scrollToReviews" to="/">Roleta</router-link>
-        <router-link to="/">Premios</router-link>
+        <router-link @click="scrollToRoleta" to="/">Roleta</router-link>
+        <router-link @click="scrollToPremios" to="/">Premios</router-link>
         <router-link to="/">Vencedores</router-link>
     </div>
 
@@ -23,10 +23,17 @@
 </template>
 
 <script setup>
-const scrollToReviews = () => {
-    const reviewsElement = document.getElementById('roleta');
-    if (reviewsElement) {
-      const yOffset = reviewsElement.getBoundingClientRect().top + window.pageYOffset;
+const scrollToRoleta = () => {
+    const roletaElement = document.getElementById('roleta');
+    if (roletaElement) {
+      const yOffset = roletaElement.getBoundingClientRect().top + window.pageYOffset;
+      window.scrollTo({ top: yOffset, behavior: 'smooth' });
+    }
+  }
+const scrollToPremios = () => {
+    const premiosElement = document.getElementById('premios-section');
+    if (premiosElement) {
+      const yOffset = premiosElement.getBoundingClientRect().top + window.pageYOffset;
       window.scrollTo({ top: yOffset, behavior: 'smooth' });
     }
   }
