@@ -52,26 +52,87 @@
             </div>
         </div>
 
-        <img v-if="girarRoleta" class="blur" src="../assets/images/blur.jpg" alt="">
+        <img v-if="estaGirando" class="blur" src="../assets/images/blur.jpg" alt="">
         <div class="button-section">
             <button id="recarregar">Recarregar</button>
             <div class="saldo-container">
                 <h4>Saldo</h4>
                 <p>R${{ saldo }}</p>
             </div>
-            <button :disabled="isDisabled" @click="girarRoleta = !girarRoleta">Rodar</button>
+            <button :disabled="isDisabled" @click="iniciarAcao">Rodar</button>
         </div>
+
+        <div v-if="overlay" class="overlay"></div>
+
+        <div v-show="premioBag" class="premios_bag">
+            <h3>Você recebeu uma bolsa de moedas!</h3>
+              <img src="../assets/images/resultado_bag.jpg" alt="">
+              <button @click="fecharBag" class="button_fechar">Fechar</button>
+              
+        </div>  
+
+        <div v-show="premioMoeda" class="premios_bag">
+            <h3>Você recebeu uma moeda dourada!</h3>
+              <img src="../assets/images/resultado_moeda.jpg" alt="">
+              <button @click="fecharMoeda" class="button_fechar">Fechar</button>
+        </div> 
     </section>
 </template>
 
 <script setup>
-import {ref} from 'vue'
-const girarRoleta = ref(false)
-const saldo = ref(0)
+import {ref, computed} from 'vue'
+const estaGirando = ref(false)
+const saldo = ref(50)
 // const disabled = ref(false)
-const isDisabled = () =>{
-    saldo.value > 5 ?  false :  true
+const isDisabled = computed(()=>{
+    return saldo.value >= 5 ? false : true
+})
+
+const overlay = ref(false)
+const premioBag = ref(false)
+const premioMoeda = ref(false)
+
+
+const fecharMoeda = ()=>{
+    premioMoeda.value = false
+    overlay.value = false 
 }
+const fecharBag = ()=>{
+    premioBag.value = false
+    overlay.value = false 
+}
+const girarRoleta = ()=> {
+        saldo.value -= 5
+        estaGirando.value = true
+    }
+
+const iniciarAcao = () => {
+      girarRoleta();
+      setTimeout(realizarFuncaoAleatoria, 4000);
+    };
+
+    const recebeuBag = ()=>{
+        premioBag.value = true
+        overlay.value = true
+        saldo.value += 5
+        estaGirando.value = false
+    }
+    const recebeuMoeda = ()=>{
+        premioMoeda.value = true
+        overlay.value = true
+        saldo.value += 2
+        estaGirando.value = false
+    }
+
+    const realizarFuncaoAleatoria = () => {
+      const numeroAleatorio = Math.random();
+
+      if (numeroAleatorio < 0.5) {
+        recebeuBag();
+      } else {
+        recebeuMoeda();
+      }
+    };
 </script>
 
 <style lang="scss" scoped>
@@ -160,4 +221,36 @@ button:hover{
 .blur{
     position: absolute;
 }
+.premios_bag{
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    width: 500px;
+    background-color: transparent;
+    align-items: center;
+    justify-content: center;
+    top: 2rem;
+    gap: 1rem;
+    z-index: 51;
+    img{
+        width: 350px;
+        border-radius: 10px;
+    }
+    .button_fechar{
+        padding: 15px 100px;
+        color: #FFF;
+        border-radius: 6px;
+        border: none;
+        cursor: pointer;
+        background-color: rgb(87, 87, 223);
+        font-family: 'Inter'
+    }
+  }
+  .overlay{
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 50;
+  }
 </style>

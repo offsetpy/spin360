@@ -13,7 +13,7 @@
     <div class="links">
         <router-link @click="scrollToRoleta" to="/">Roleta</router-link>
         <router-link @click="scrollToPremios" to="/">Premios</router-link>
-        <router-link to="/">Vencedores</router-link>
+        <router-link @click="scrollToAjuda" to="/">Como funciona</router-link>
     </div>
 
     <div class="button-sign">
@@ -32,6 +32,13 @@ const scrollToRoleta = () => {
   }
 const scrollToPremios = () => {
     const premiosElement = document.getElementById('premios-section');
+    if (premiosElement) {
+      const yOffset = premiosElement.getBoundingClientRect().top + window.pageYOffset;
+      window.scrollTo({ top: yOffset, behavior: 'smooth' });
+    }
+  }
+const scrollToAjuda = () => {
+    const premiosElement = document.getElementById('ajuda');
     if (premiosElement) {
       const yOffset = premiosElement.getBoundingClientRect().top + window.pageYOffset;
       window.scrollTo({ top: yOffset, behavior: 'smooth' });

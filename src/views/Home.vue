@@ -1,4 +1,5 @@
 <template>
+
     <main>
       <Header />
   
@@ -17,17 +18,33 @@
       </section>
   
       <section id="card-section">
-        
+
         <Roleta id="roleta" />
         
+              
       </section>
-
       <section id="premios-section">
 
         <Premios />
-
       </section>
 
+      <section id="ajuda">
+        <h2>Como jogar?</h2>
+        <p><Strong>Explore o Emocionante Festival de Prêmios com o nosso Festival de Prêmios!</Strong>
+          <br>
+          <br>
+          <strong>Ingresso ao Festival</strong>: Para participar dessa empolgante jornada, você só precisa adicionar um mínimo de 5 reais de crédito. Com esse valor, você já estará pronto para começar a girar a roleta e buscar as suas chances de ganhar grandes prêmios.
+          <ul>
+            <br>
+            
+            <strong>Como Participar</strong>
+            <li><strong>Moeda Dourada</strong>: À medida que você joga, há a empolgante possibilidade de receber uma moeda dourada. Essa moeda não apenas adiciona 1 real de crédito imediatamente à sua conta, mas também lhe dá outra oportunidade de girar a roleta e multiplicar os seus créditos, aumentando suas chances de receber prêmios emocionantes.
+            </li>
+            <li><strong>Bolsa de Moedas</strong>: A sorte pode realmente sorrir para você quando você recebe uma bolsa de moedas! Isso significa que você ganhou 5 reais de crédito extra para continuar a jogar e aumentar as suas chances de conquistar prêmios incríveis no nosso Festival de Prêmios.</li>
+            <li><strong>Prêmios Extraordinários</strong>: Aqui está onde a emoção atinge o auge! Se você tiver a sorte de receber um dos prêmios principais, será solicitado que você forneça o seu endereço completo e o nome do remetente para que possamos enviar o prêmio diretamente para você. Esses prêmios incríveis são projetados para elevar a sua experiência a um novo nível e tornar cada giro da roleta ainda mais emocionante.</li>
+          </ul>
+          </p>
+      </section>
     </main>
   </template>
   
@@ -35,6 +52,9 @@
   import Header from '../components/Header.vue'
   import Roleta from '../components/Roleta.vue';
   import Premios from '../components/Premios.vue';
+  import {ref} from 'vue' 
+
+
   </script>
   
   <style scoped lang="scss">
@@ -147,4 +167,36 @@
     position: relative;
     padding: 50px 10px;
 }
+#ajuda{
+  height: 40rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: baseline;
+  background-color: #121212;
+  font-family: 'Inter';
+  color: #FFF;
+  padding-top: 8rem;
+  align-items: center;
+  position: relative;
+  padding: 50px 10px;
+  gap: 1rem;
+  h2{
+    font-size: 40px;
+  }
+  p{
+    width: 50rem;
+    line-height: 1.5rem;
+    letter-spacing: 1px;
+    font-size: 12px;
+    ul{
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    strong{
+      font-size: 16px;
+    }
+  }
+}
+
   </style>
